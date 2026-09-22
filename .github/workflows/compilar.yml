@@ -1,0 +1,21 @@
+name: Firmware Compilador ESP32-P4
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    - name: Compilar con ESP-IDF v5.3
+      uses: espressif/idf-build-action@v2
+      with:
+        esp_idf_version: v5.3
+        target: esp32p4
